@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import Button from '../../components/Button';
 
 function Register() {
 
@@ -18,7 +19,7 @@ function Register() {
       <div className='bg-white p-5'>
         <div className='flex flex-col gap-5 w-[450px]'>
 
-        <h1 className='text-2xl font-bold text-center text-primary uppercase'>radBlok - Register</h1>
+        <h1 className='text-2xl font-bold text-center text-secondary uppercase'>radBlok - Register</h1>
 
         <input 
           type='text' 
@@ -41,7 +42,15 @@ function Register() {
           onChange={(e) => setUser({...user, password: e.target.value})}
           />
 
-        <button className='primary-contained-btn uppercase' onClick={register}>Register</button>
+        <Button 
+          title='Register' 
+          onClick={register}
+          disabled={
+            user.name.length < 3 ||
+            user.email.length < 3 ||
+            user.password.length < 3
+          }
+        />
 
         <Link to='/login' className='text-center text-primary underline'>Already have an account ? Login</Link>
 
